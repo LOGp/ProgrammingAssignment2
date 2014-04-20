@@ -47,7 +47,7 @@ cacheSolve <- function(x, ...) {
                 x$set_inverse(inverse)
         }
         else {
-        # Inverse is set, just have to return it
+        # Inverse is set, just have to return it (which is done at the end of the function)
                 message("Using cached inverse")
         }
         

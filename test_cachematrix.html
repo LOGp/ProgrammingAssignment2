@@ -230,25 +230,78 @@ B
 <pre><code class="r">source(&quot;cachematrix.R&quot;)
 </code></pre>
 
-<h3>Initiate the matrix</h3>
+<h3>Initiate the matrix &amp; get its value</h3>
 
 <pre><code class="r">Acache &lt;- makeCacheMatrix(A)
+Acache$get()
+</code></pre>
+
+<pre><code>##      [,1] [,2]
+## [1,]    0    1
+## [2,]    1    1
 </code></pre>
 
 <h3>First inversion</h3>
 
-<pre><code class="r">cacheSolve(A)
+<pre><code class="r">cacheSolve(Acache)
 </code></pre>
 
-<pre><code>## NULL
+<pre><code>## Computing and caching the inverse
 </code></pre>
 
-<h3>Second inversion (should not be computed)</h3>
-
-<pre><code class="r">cacheSolve(A)
+<pre><code>##      [,1] [,2]
+## [1,]   -1    1
+## [2,]    1    0
 </code></pre>
 
-<pre><code>## NULL
+<h3>Second inversion (cache should be used)</h3>
+
+<pre><code class="r">cacheSolve(Acache)
+</code></pre>
+
+<pre><code>## Using cached inverse
+</code></pre>
+
+<pre><code>##      [,1] [,2]
+## [1,]   -1    1
+## [2,]    1    0
+</code></pre>
+
+<h3>Set new value of matrix</h3>
+
+<pre><code class="r">Acache$set(matrix(c(-1, 1, 1, 1), 2, 2))
+Acache$get()
+</code></pre>
+
+<pre><code>##      [,1] [,2]
+## [1,]   -1    1
+## [2,]    1    1
+</code></pre>
+
+<h3>First inversion</h3>
+
+<pre><code class="r">cacheSolve(Acache)
+</code></pre>
+
+<pre><code>## Computing and caching the inverse
+</code></pre>
+
+<pre><code>##      [,1] [,2]
+## [1,] -0.5  0.5
+## [2,]  0.5  0.5
+</code></pre>
+
+<h3>Second inversion (cache should be used)</h3>
+
+<pre><code class="r">cacheSolve(Acache)
+</code></pre>
+
+<pre><code>## Using cached inverse
+</code></pre>
+
+<pre><code>##      [,1] [,2]
+## [1,] -0.5  0.5
+## [2,]  0.5  0.5
 </code></pre>
 
 </body>

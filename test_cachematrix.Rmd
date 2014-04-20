@@ -27,21 +27,37 @@ Source the R file
 source("cachematrix.R")
 ```
 
-### Initiate the matrix
+### Initiate the matrix & get its value
 ```{r}
 Acache <- makeCacheMatrix(A)
+Acache$get()
 ```
 
 ### First inversion
 ```{r}
-cacheSolve(A)
+cacheSolve(Acache)
 ```
 
 ### Second inversion (cache should be used)
 ```{r}
-cacheSolve(A)
+cacheSolve(Acache)
 ```
 
+### Set new value of matrix
+```{r}
+Acache$set(matrix(c(-1, 1, 1, 1), 2, 2))
+Acache$get()
+```
+
+### First inversion
+```{r}
+cacheSolve(Acache)
+```
+
+### Second inversion (cache should be used)
+```{r}
+cacheSolve(Acache)
+```
 
 
 

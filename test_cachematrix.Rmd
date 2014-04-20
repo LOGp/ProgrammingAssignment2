@@ -1,0 +1,53 @@
+Simple verification for cached matrix inversion
+========================================================
+
+## Compute regular matrix inverse
+
+### Define the matrix
+```{r}
+A <- matrix(c(0, 1, 1, 1), 2, 2)
+A
+```
+
+### Inverse the matrix
+```{r}
+B <- solve(A)
+B
+```
+
+### Check the inverse is ok
+```{r}
+A %*% B
+B %*% A
+```
+
+## Compute matrix inverse through cached version
+Source the R file
+```{r}
+source("cachematrix.R")
+```
+
+### Initiate the matrix
+```{r}
+Acache <- makeCacheMatrix(A)
+```
+
+### First inversion
+```{r}
+Acache$solve()
+```
+
+### Second inversion (should not be computed)
+```{r}
+Acache$solve()
+```
+
+
+
+
+
+
+
+
+
+

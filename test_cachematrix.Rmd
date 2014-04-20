@@ -34,12 +34,12 @@ Acache <- makeCacheMatrix(A)
 
 ### First inversion
 ```{r}
-Acache$solve()
+cacheSolve(A)
 ```
 
-### Second inversion (should not be computed)
+### Second inversion (cache should be used)
 ```{r}
-Acache$solve()
+cacheSolve(A)
 ```
 
 

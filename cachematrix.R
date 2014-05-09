@@ -44,7 +44,7 @@ cacheSolve <- function(x, ...) {
         # Inverse is NULL, so it has to be computed and updated to x
                 message("Computing and caching the inverse")
                 inverse <- solve(x$get())
-                x$set_inverse(inverse)
+                x$set_inverse(inverse, ...)
         }
         else {
         # Inverse is set, just have to return it (which is done at the end of the function)
